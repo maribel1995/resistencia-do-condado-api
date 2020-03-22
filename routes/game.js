@@ -21,4 +21,8 @@ router.post('/', (req, res, next) => {
     res.send({ status: "Jogo Configurado" });
   });
 
+  router.get('/status', (req, res) => {
+    res.status(200).json(loyaltyCards);
+  });
+
 module.exports = router;
