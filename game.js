@@ -12,7 +12,8 @@ const update = loyaltyCards => {
 
   return {
     spyCount: updatedCards.spy.count,
-    resistanceCount: updatedCards.resistance.count
+    resistanceCount: updatedCards.resistance.count,
+    youAre: yourCard.name
   };
 };
 
@@ -28,9 +29,10 @@ const getRandomCard = cards => {
   return cards[shuffle];
 };
 
-const configuration = ({ spyCount, resistanceCount }) => {
+const configuration = ({ spyCount, resistanceCount, youAre }) => {
   return {
     amount: spyCount + resistanceCount,
+    youAre: youAre,
     spy: {
       name: "spy",
       count: spyCount,
