@@ -4,6 +4,7 @@ const bodyParser = require("body-parser");
 const app = express();
 const server = require("http").createServer(app);
 const io = require("socket.io")(server)
+require('dotenv').config();
 
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, "public")));
@@ -20,4 +21,4 @@ io.on("connection", socket => {
   console.log(`Socket conectado: ${socket.id}`);
 });
 
-server.listen(3000);
+server.listen(process.env.PORT);
