@@ -15,7 +15,7 @@ app.set("view engine", "html");
 
 app.use(cors({
   credentials: true,
-  origin: ['https://resistencia-do-condado.herokuapp.com/', 'http://resistencia-do-condado.herokuapp.com/', 'http://localhost:3000']
+  origin: ['https://resistencia-do-condado.herokuapp.com/', 'http://resistencia-do-condado.herokuapp.com/', 'http://localhost:3000', 'http://localhost:3001']
 }));
 
 app.use('/api/game/' , require('./routes/game'))
