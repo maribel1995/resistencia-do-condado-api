@@ -4,9 +4,9 @@ const path = require("path");
 const bodyParser = require("body-parser");
 const mongoose = require('mongoose');
 const app = express();
-const server = require("http").createServer(app);
+var server = require('http').Server(app);
+var io = require('socket.io')(server);
 const cors = require('cors');
-const io = require("socket.io")(server);
 const logger = require("morgan")
 
 //mongo

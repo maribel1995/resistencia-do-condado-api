@@ -5,14 +5,6 @@ const GameSchema = new Schema({
     players: [{
         type: Schema.Types.ObjectId, ref: 'Player'
     }],
-    resistanceCount: {
-        type: Number,
-        required: true
-    },
-    spyCount: {
-        type: Number,
-        required: true
-    },
     playerTurn: { type: Schema.Types.ObjectId, ref: 'Player'}
 })
 

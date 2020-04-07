@@ -3,12 +3,10 @@ const router = express.Router();
 const Room = require('../models/Room');
 
 router.post('/', (req, res, next) => {
-    const { playerName } = req.body;
-    console.log(req.body)
-    const name = `Sala de ${playerName}`;
-    Room.create({ name })
+    const { player } = req.body;
+    const name = `Sala de ${player.nickname}`;
+    Room.create({ name, players: [player.id], playersCount: 1 })
     .then(response => {
-        console.log('criou')
         res.json(response)
     })
     .catch(error => {
@@ -41,14 +39,20 @@ router.put('/:id', (req,res, next) => {
     .then((room) => {
         res.json(room)
     })
+    .catch(error => {
+        res.json(error);
+    })
 });
 
-//join room
+//player join room
 router.put('/join/:id', (req,res,next) => {
     const { player } = req.body;
     Room.findByIdAndUpdate(req.params.id, {$push: { players: player }, $inc: {playersCount: 1}}, {new: true})
     .then((room) => {
         res.json({room})
+    })
+    .catch(error => {
+        res.json(error);
     })
 })
 
